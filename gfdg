@@ -1,0 +1,216 @@
+package demo01;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+public class Ventana extends JFrame{
+
+	public Ventana() {
+		
+		String botones[] = {"Baja California Sur","Baja California Norte","Distrito Federal","","7","8","9","/"}; 
+		Object colums[] = {"Número de control","Apellidos","Nombres","Acciones"};
+		Object data[][] = {
+							{ "10191823","Zuma","Abrim","" },
+							{ "91923844","Ari","Cruz","" },
+							{ "91284751","Rodri","Ferna","" },
+							{ "01928374","Abaro","Angel","" },
+							{ "99176462","Mendoz","Piter","" }
+						  };
+		
+		
+		this.setVisible(true);
+		this.setSize(500, 700);
+		this.setLocationRelativeTo(null);
+		this.setTitle("Hola mundo");
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
+		this.getContentPane().setBackground(Color.cyan);
+		
+		//titulo
+		JLabel title = new JLabel("Registro nuevo usuario",JLabel.CENTER);
+		title.setFont(new Font("Comic Sans", Font.BOLD,20));
+		title.setSize(280, 40);
+		title.setLocation(100, 20);
+		title.setOpaque(true);
+		title.setBackground(Color.green);
+		this.add(title);
+		
+		JLabel tag1 = new JLabel("Ingrese el nombre de usuario: ",JLabel.CENTER);
+		tag1.setSize(250, 20);
+		tag1.setLocation(120, 80);
+		tag1.setOpaque(true);
+		tag1.setBackground(Color.black);
+		tag1.setForeground(Color.white);
+		this.add(tag1);
+		
+		JTextField username = new JTextField("Write your username");
+		username.setSize(250, 40);
+		username.setLocation(120, 100);
+		this.add(username);
+		
+		JLabel tag2 = new JLabel("Ingrese el correo electrónico: ",JLabel.CENTER);
+		tag2.setSize(250, 20);
+		tag2.setLocation(120, 140);
+		tag2.setOpaque(true);
+		tag2.setBackground(Color.black);
+		tag2.setForeground(Color.white);
+		this.add(tag2);
+		
+		JPasswordField password = new JPasswordField();
+		password.setSize(250, 40);
+		password.setLocation(120, 160);
+		this.add(password);
+		
+      
+		//DefaultTableModel dtm = new DefaultTableModel(data,colums); 
+
+		JTable estudiantes = new JTable(data,colums);
+		
+		JScrollPane test = new JScrollPane(estudiantes);
+		test.setSize(350, 200);
+		test.setLocation(60, 240);
+		this.add(test); 
+	
+		/*JLabel tag3 = new JLabel("Ingrese información general: ",JLabel.CENTER);
+		tag3.setSize(250, 20);
+		tag3.setLocation(120, 200);
+		tag3.setOpaque(true);
+		tag3.setBackground(Color.black);
+		tag3.setForeground(Color.white);
+		this.add(tag3);
+		
+		JTextArea resumen = new JTextArea();
+		resumen.setSize(250, 100);
+		resumen.setLocation(120, 230);
+		resumen.setRows(3);
+		resumen.setOpaque(true);
+		resumen.setBackground(Color.gray);
+		resumen.setForeground(Color.white);
+		this.add(resumen);
+		
+		JLabel tag4 = new JLabel("Seleccione las asignaturas: ",JLabel.CENTER);
+		tag4.setSize(250, 20);
+		tag4.setLocation(120, 335);
+		tag4.setOpaque(true);
+		tag4.setBackground(Color.black);
+		tag4.setForeground(Color.white);
+		this.add(tag4);
+		
+		JCheckBox asig1 = new JCheckBox();
+		asig1.setText("Programación 3");
+		asig1.setSize(150, 40);
+		asig1.setLocation(120, 360);
+		asig1.setOpaque(true);
+		asig1.setBackground(Color.cyan);
+		this.add(asig1);
+		
+		JCheckBox asig2 = new JCheckBox("Español",true);
+		asig2.setSize(150, 40);
+		asig2.setLocation(270, 360);
+		asig2.setOpaque(true);
+		asig2.setBackground(Color.red);
+		asig2.setForeground(Color.white);
+		this.add(asig2);
+		
+		JLabel tag5 = new JLabel("Seleccione el idioma: ",JLabel.CENTER);
+		tag5.setSize(250, 20);
+		tag5.setLocation(120, 405);
+		tag5.setOpaque(true);
+		tag5.setBackground(Color.black);
+		tag5.setForeground(Color.white);
+		this.add(tag5);
+		
+		JRadioButton lang1 = new JRadioButton("Español");
+		lang1.setSize(130, 20);
+		lang1.setLocation(120, 430);
+		lang1.setOpaque(true);
+		lang1.setBackground(Color.orange);
+		this.add(lang1);
+		
+		JRadioButton lang2 = new JRadioButton("Ingles");
+		lang2.setSize(130, 20);
+		lang2.setLocation(260, 430);
+		lang2.setOpaque(true);
+		lang2.setBackground(Color.magenta);
+		this.add(lang2);
+		
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(lang1);
+		bg.add(lang2);
+		
+		JLabel tag6 = new JLabel("Seleccione el país: ",JLabel.CENTER);
+		tag6.setSize(250, 20);
+		tag6.setLocation(120, 455);
+		tag6.setOpaque(true);
+		tag6.setBackground(Color.black);
+		tag6.setForeground(Color.white);
+		this.add(tag6);
+		
+		JComboBox pais = new JComboBox(botones);
+		pais.setSize(200, 40);
+		pais.setLocation(120, 480);
+		//pais.addItem("Hola 1");
+		//pais.addItem("Hola 2");
+		pais.setOpaque(true);
+		pais.setBackground(Color.LIGHT_GRAY);
+		this.add(pais); */
+		
+		
+		JMenuBar jmb = new JMenuBar();
+		jmb.setLocation(0, 0);
+		jmb.setSize(500, 20);
+		this.add(jmb);
+		
+		JMenu jm1 = new JMenu("Inicio");
+		JMenu jm2 = new JMenu("Estudiantes");
+		JMenu jm3 = new JMenu("Profesores");
+		JMenu jm4 = new JMenu("Carga");
+		JMenu jm5 = new JMenu("Ayuda");
+		
+		jm5.setEnabled(false);
+		
+		jmb.add(jm1);
+		jmb.add(jm2);
+		jmb.add(jm3);
+		jmb.add(jm4);
+		jmb.add(jm5);
+		
+		JMenuItem jmi1 = new JMenuItem("Nuevo registro");
+		JMenuItem jmi2 = new JMenuItem("Consulta");
+		
+		jm3.add(jmi1);
+		jm3.add(jmi2);
+		
+		JButton acceder = new JButton("Acceder");
+		acceder.setSize(100, 40);
+		acceder.setLocation(120, 600);
+		this.add(acceder);
+		
+		this.repaint();
+		this.revalidate();
+		
+	}
+
+}
